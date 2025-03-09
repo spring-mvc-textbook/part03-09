@@ -47,14 +47,16 @@ public class PostController {
     // 게시글 보기 (화면, GET)
     @RequestMapping(value = "/posts/{id}", method = RequestMethod.GET)
     public String readGet(@PathVariable("id") int id, Model model) {
-        model.addAttribute("post", postService.read(id));
+        PostDto post = postService.read(id);
+        model.addAttribute("post", post);
         return "post/read";
     }
 
     // 게시글 수정 (화면, GET)
     @RequestMapping(value = "/posts/{id}/update", method = RequestMethod.GET)
     public String updateGet(@PathVariable("id") int id, Model model) {
-        model.addAttribute("post", postService.read(id));
+        PostDto post = postService.read(id);
+        model.addAttribute("post", post);
         return "post/update";
     }
 }
